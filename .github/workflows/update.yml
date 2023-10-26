@@ -13,7 +13,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Print Image Repository
-      id: imgupd
+      id: imgred
       uses: mikefarah/yq@master
       with: 
         cmd: echo "${{ github.event.client-payload.image }}"'
