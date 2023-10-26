@@ -12,11 +12,21 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Print Image Repository
+      id: imgupd
+      uses: mikefarah/yq@master
+      with: 
+        cmd: echo "${{ github.event.client-payload.image }}"'
+
     - name: Update Image Version
       id: imgupd
       uses: mikefarah/yq@master
       with: 
-        cmd: yq eval '.image.repository = "${{ github.event.client-payload.image }}"' -i myapp/dev-values.yaml
+        cmd: yq eval '.image.repository = "${{ github.event.client-payload.image }}"' -i myapp/values.yaml
+
+    - run: run $TEXT
+      env:
+        TEXT: cat myapp/values.yaml
       
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
