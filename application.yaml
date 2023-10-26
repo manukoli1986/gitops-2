@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/manukoli1986/gitops-1.git
+    repoURL: https://github.com/manukoli1986/gitops-2.git
     targetRevision: HEAD
     path: myapp
   destination: 
