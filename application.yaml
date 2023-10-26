@@ -10,6 +10,16 @@ spec:
     repoURL: https://github.com/manukoli1986/gitops-2.git
     targetRevision: HEAD
     path: myapp
+    helm:
+      valueFiles:
+        - values.yaml
+      parameters:
+        - name: image.pullPolicy
+          value: Always
+        - name: image.repository
+          value: manukoli1986/myapp
+        - name: service.type
+          value: LoadBalancer
   destination: 
     server: https://kubernetes.default.svc
     namespace: default
